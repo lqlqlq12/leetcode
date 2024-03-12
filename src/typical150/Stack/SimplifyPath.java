@@ -1,9 +1,5 @@
 package typical150.Stack;
 
-import Verify.A;
-import sun.plugin2.gluegen.runtime.CPU;
-import typical150.Math.PlusOne;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 

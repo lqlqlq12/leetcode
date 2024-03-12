@@ -17,8 +17,8 @@ import java.util.Arrays;
 //1 1 1 4 5 6
 //1 1 2 2 3 3
 //1 3 2 2 1 3
-//官解 如果是偶数 左右部分一样大 先右后左
-//如果是奇数 左边比右边大 先左后右 不好证明 就这样把
+//官解 如果是偶数 左右部分一样多 先右后左
+//如果是奇数 左边比右边多 先左后右 不好证明 就这样把
 public class WiggleSort {
     public void wiggleSort(int[] nums) {
         int[] arr = nums.clone();

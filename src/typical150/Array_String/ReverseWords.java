@@ -1,7 +1,5 @@
 package typical150.Array_String;
 
-import Verify.A;
-
 import java.util.*;
 
 //反转字符串的单词
