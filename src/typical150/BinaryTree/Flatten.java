@@ -23,4 +23,44 @@ public class Flatten {
             curr = curr.right;
         }
     }
+
+
+    public TreeNode toList(TreeNode root) {
+        if (root == null) return root;
+        TreeNode ans = root;
+        while (root != null) {
+            if (root.left != null) {
+                TreeNode t = root.left;
+                while (t.right != null) t = t.right;
+                t.right = root.right;
+                root.right = null;
+            } else {
+                root.left = root.right;
+                root.right = null;
+            }
+            root = root.left;
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        TreeNode l1 = new TreeNode(2);
+        TreeNode r1 = new TreeNode(3);
+        TreeNode l2 = new TreeNode(4);
+        TreeNode r2 = new TreeNode(5);
+        TreeNode l3 = new TreeNode(6);
+        TreeNode r3 = new TreeNode(7);
+        root.left = l1;
+        root.right = r1;
+        l1.left = l2;
+        l1.right = r2;
+        r1.left = l3;
+        r1.right = r3;
+        TreeNode head = new Flatten().toList(root);
+        while (head != null) {
+            System.out.println(head.val);
+            head = head.left;
+        }
+    }
 }
