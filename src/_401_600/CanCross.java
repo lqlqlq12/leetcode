@@ -15,6 +15,7 @@ import java.util.Set;
 //思路:用动规？ dp[i]表示的是跳了多远到达stones[i] 时间O(n^2) 空间也很大 感觉会超时 没超时 只击败了5% 哈哈
 //试一下dfs 好 直接超时了 笑死
 //看官解把 官解用记忆化搜索优化了dfs boolean[i][k]表示能不能跳k步然后到达i
+//动规 dp[i][k]能否以k步到达i
 public class CanCross {
 //    public boolean canCross_1(int[] stones) {
 //        int len = stones.length;
@@ -60,6 +61,27 @@ public class CanCross {
             }
         }
         return res[index][k] = false;
+    }
+
+    public boolean optimize(int[] stones) {
+        int len = stones.length;
+        for (int i = 0, sum = 0; i < len; i++) {
+            if (stones[i] > sum) return false;
+            sum += i + 1;
+        }
+        boolean[][] dp = new boolean[len][len];
+        dp[0][0] = true;
+        for (int i = 1; i < len; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                int k = stones[i] - stones[j];
+                if (k > j + 1) break;
+                if (dp[j][k - 1] || dp[j][k] || dp[j][k + 1]) {
+                    dp[i][k] = true;
+                    if (i == len - 1) return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Test
