@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 //407.接雨水II
 /*给你一个 m x n 的矩阵，其中的值均为非负整数，代表二维高度图每个单元的高度，请计算图中形状最多能接多少体积的雨水。*/
+//官解:一个块能装多少水 取决于它本身的高度以及上下左右四个块水的高度
 public class TrapRainWater {
     public int trapRainWater(int[][] heightMap) {
         int m = heightMap.length, n = heightMap[0].length;
